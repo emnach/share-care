@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=390, height=844">
+  <title>Share & Care - Donor Donate Step 1</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: #F8F9FA;
+      width: 390px;
+      height: 844px;
+      overflow: hidden;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    .header {
+      padding: 16px 24px 8px;
+    }
+    .header-title {
+      font-size: 24px;
+      font-weight: bold;
+      color: #2D3436;
+    }
+    .header-subtitle {
+      font-size: 14px;
+      color: #636E72;
+    }
+    .progress-container {
+      display: flex;
+      justify-content: space-between;
+      padding: 16px 48px;
+      position: relative;
+    }
+    .progress-line {
+      position: absolute;
+      top: 30px;
+      left: 80px;
+      right: 80px;
+      height: 3px;
+      background: #E9ECEF;
+      z-index: 0;
+    }
+    .progress-fill {
+      height: 100%;
+      background: #FF6B35;
+      width: 0%;
+    }
+    .step-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      z-index: 1;
+    }
+    .step-circle {
+      width: 32px;
+      height: 32px;
+      border-radius: 16px;
+      background: #FFFFFF;
+      border: 2px solid #E9ECEF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 600;
+      color: #636E72;
+    }
+    .step-circle.active {
+      border-color: #FF6B35;
+      color: #FF6B35;
+    }
+    .step-label {
+      font-size: 10px;
+      color: #636E72;
+      margin-top: 4px;
+    }
+    .step-label.active {
+      color: #FF6B35;
+      font-weight: 600;
+    }
+    .content {
+      flex: 1;
+      padding: 24px;
+      overflow-y: auto;
+    }
+    .step-title {
+      font-size: 20px;
+      font-weight: 600;
+      color: #2D3436;
+      margin-bottom: 16px;
+    }
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+    .category-card {
+      background: #FFFFFF;
+      border-radius: 16px;
+      padding: 24px;
+      text-align: center;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .category-card:hover {
+      border-color: #FF6B35;
+    }
+    .category-icon-circle {
+      width: 64px;
+      height: 64px;
+      border-radius: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 8px;
+    }
+    .category-label {
+      font-size: 14px;
+      font-weight: 600;
+      color: #2D3436;
+    }
+    .tab-bar {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 12px 0;
+      background: #FFFFFF;
+      border-top: 1px solid #E9ECEF;
+      position: relative;
+    }
+    .tab-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      cursor: pointer;
+    }
+    .tab-label {
+      font-size: 12px;
+      font-weight: 600;
+      color: #636E72;
+    }
+    .donate-button {
+      width: 64px;
+      height: 64px;
+      border-radius: 32px;
+      background: #FF6B35;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(255, 107, 53, 0.4);
+      position: absolute;
+      bottom: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <div class="header">
+      <h1 class="header-title">Donate a Meal</h1>
+      <p class="header-subtitle">Paris Bakery</p>
+    </div>
+
+    <!-- Progress Steps -->
+    <div class="progress-container">
+      <div class="progress-line">
+        <div class="progress-fill"></div>
+      </div>
+      <div class="step-wrapper">
+        <div class="step-circle active">1</div>
+        <span class="step-label active">Category</span>
+      </div>
+      <div class="step-wrapper">
+        <div class="step-circle">2</div>
+        <span class="step-label">Details</span>
+      </div>
+      <div class="step-wrapper">
+        <div class="step-circle">3</div>
+        <span class="step-label">Locker</span>
+      </div>
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+      <h2 class="step-title">Choose meal type</h2>
+      <div class="category-grid">
+        <div class="category-card">
+          <div class="category-icon-circle" style="background: rgba(255, 107, 107, 0.12)">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="#FF6B6B"><path d="M13.5.67s.74 2.65.74 4.8c0 2.06-1.35 3.73-3.41 3.73-2.07 0-3.63-1.67-3.63-3.73l.03-.36C5.21 7.51 4 10.62 4 14c0 4.42 3.58 8 8 8s8-3.58 8-8C20 8.61 17.41 3.8 13.5.67z"/></svg>
+          </div>
+          <span class="category-label">Hot meal</span>
+        </div>
+        <div class="category-card">
+          <div class="category-icon-circle" style="background: rgba(116, 185, 255, 0.12)">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="#74B9FF"><path d="M22 11h-4.17l3.24-3.24-1.41-1.42L15 11h-2V9l4.66-4.66-1.42-1.41L13 6.17V2h-2v4.17L7.76 2.93 6.34 4.34 11 9v2H9L4.34 6.34 2.93 7.76 6.17 11H2v2h4.17l-3.24 3.24 1.41 1.42L9 13h2v2l-4.66 4.66 1.42 1.41L11 17.83V22h2v-4.17l3.24 3.24 1.42-1.41L13 15v-2h2l4.66 4.66 1.41-1.42L17.83 13H22z"/></svg>
+          </div>
+          <span class="category-label">Cold meal</span>
+        </div>
+        <div class="category-card">
+          <div class="category-icon-circle" style="background: rgba(253, 203, 110, 0.12)">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="#FDCB6E"><path d="M18 6l-1 1h-2l1-1c-1.21-1.21-3.29-1.21-4.5 0-1.21 1.21-1.21 3.29 0 4.5l8.5 8.5c1.21 1.21 3.29 1.21 4.5 0s1.21-3.29 0-4.5L18 6zM6 17c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"/></svg>
+          </div>
+          <span class="category-label">Fruits</span>
+        </div>
+        <div class="category-card">
+          <div class="category-icon-circle" style="background: rgba(0, 184, 148, 0.12)">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="#00B894"><path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/></svg>
+          </div>
+          <span class="category-label">Vegetables</span>
+        </div>
+        <div class="category-card">
+          <div class="category-icon-circle" style="background: rgba(225, 112, 85, 0.12)">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="#E17055"><path d="M2 21h19v-3H2v3zM20 8h-3V5L12 2 7 5v3H4c-1.1 0-2 .9-2 2v5h19v-5c0-1.1-.9-2-2-2z"/></svg>
+          </div>
+          <span class="category-label">Bakery</span>
+        </div>
+        <div class="category-card">
+          <div class="category-icon-circle" style="background: rgba(162, 155, 254, 0.12)">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="#A29BFE"><path d="M18.06 22.99h1.66c.84 0 1.53-.64 1.63-1.46L23 5.05l-5 2v8.14l-1.28-.68a1.7 1.7 0 0 0-1.62 0l-2.2 1.17-2.2-1.17a1.7 1.7 0 0 0-1.62 0L7.8 15.49l-1.28-.68V7l-5-2 1.65 16.48c.1.82.79 1.46 1.63 1.46h1.66c.48 0 .93-.22 1.23-.59l2.28-2.86 2.28 2.86c.3.37.75.59 1.23.59h1.66c.48 0 .93-.22 1.23-.59l2.28-2.86 2.28 2.86c.3.37.75.59 1.23.59z"/></svg>
+          </div>
+          <span class="category-label">Snack</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tab Bar -->
+    <div class="tab-bar">
+      <div class="tab-item">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="#636E72"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+        <span class="tab-label">Profile</span>
+      </div>
+      <div style="width: 64px;"></div>
+      <div class="tab-item">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="#636E72"><path d="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z"/></svg>
+        <span class="tab-label">Logout</span>
+      </div>
+      <div class="donate-button">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
